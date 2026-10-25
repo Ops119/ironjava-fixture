@@ -190,7 +190,7 @@ Added:
 
 The same removal, and no additions, holds if the version is left out of the pair key. The POM in this branch stays on `1.9`.
 
-That one-line upgrade was also committed on `cursor/verify-commons-text-1-10-0-68a8` at `e8d39658bc88c364ef2fbefdee33db637d87c2ef` and was not merged here. On that commit, `mvn -B -ntp verify` passed 17 tests (finished `2026-10-25T16:03:53Z`). A fresh OSV-Scanner 2.7.0 scan exited `1` and produced the same advisory/component pairs as `evidence/osv-scanner-patched.json`: `GHSA-599f-7c49-w659` and `CVE-2022-42889` for `commons-text` `1.9` were gone, and no pairs were added. Commons Text `1.10.0` did not appear in the vulnerability report.
+That one-line upgrade is on `cursor/verify-commons-text-1-10-0-68a8` at `e8d39658bc88c364ef2fbefdee33db637d87c2ef`. The branch is pushed and must not be merged; this branch stays on `1.9`. On that commit, `mvn -B -ntp verify` passed 17 tests (finished `2026-10-25T16:03:53Z`). A fresh OSV-Scanner 2.7.0 scan exited `1` and produced the same advisory/component pairs as `evidence/osv-scanner-patched.json`: `GHSA-599f-7c49-w659` and `CVE-2022-42889` for `commons-text` `1.9` were gone, and no pairs were added. Commons Text `1.10.0` did not appear in the vulnerability report.
 
 ## Branch `scenario/test-failure`
 

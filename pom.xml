@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dev.ironjava</groupId>
+  <artifactId>ironjava-fixture</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>IronJava acceptance fixture</name>
+  <description>Deliberately vulnerable single-module Maven service scanned by the IronJava pilot. See FIXTURE.md.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.release>21</maven.compiler.release>
+  </properties>
+
+  <!--
+    Negative case: BOM-managed version. guava has no <version> on the dependency.
+    The imported BOM is not a <parent>. This project has no parent POM.
+  -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava-bom</artifactId>
+        <version>31.1-jre</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <!--
+      FIXABLE direct production dependency. Explicit version.
+      GHSA-599f-7c49-w659 / CVE-2022-42889 affects 1.5–1.9 and is fixed in 1.10.0.
+    -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>1.9</version>
+    </dependency>
+
+    <!--
+      Clean pin. commons-text 1.9 would otherwise pull commons-lang3 3.11, and 1.10.0
+      would pull 3.12.0. Both are affected by GHSA-j288-q9x7-2f5v / CVE-2025-48924
+      (fixed in 3.18.0). Pinning 3.20.0 keeps that advisory out of the before/after
+      comparison. See FIXTURE.md.
+    -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>
+    </dependency>
+
+    <!--
+      Manual review: direct production dependency with an explicit version, but the
+      only published fix is 2.0 (major). GHSA-mjmj-j48q-9wg2 / CVE-2022-1471.
+    -->
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>1.33</version>
+    </dependency>
+
+    <!--
+      Manual review: direct production dependency whose version comes from guava-bom
+      31.1-jre. GHSA-7g45-4rm6-3mm3 / CVE-2023-2976 and GHSA-5mg8-w23w-74h3 /
+      CVE-2020-8908. OSV records the fix as 32.0.0-android, a major bump from 31.
+    -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <!--
+      Manual review: test scope. GHSA-4jrv-ppp4-jm57 / CVE-2022-25647, fixed in 2.8.9
+      (same major). OSV-Scanner 2.7.0 does not put Maven test dependencies in the
+      resolved graph, and test scope is not an eligible production dependency.
+    -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.12.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>3.5.0</version>
+        <executions>
+          <execution>
+            <id>pin-jdk</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>[21,22)</version>
+                </requireJavaVersion>
+                <requireMavenVersion>
+                  <version>[3.8,4.0)</version>
+                </requireMavenVersion>
+                <banDuplicatePomDependencyVersions/>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.3</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>dev.ironjava.fixture.FixtureServer</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

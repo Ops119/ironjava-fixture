@@ -1,0 +1,8 @@
+{
+  "query": {
+    "package": "org.yaml:snakeyaml",
+    "version": "2.0"
+  },
+  "vuln_count": 0,
+  "vulns": []
+}

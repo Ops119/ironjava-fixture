@@ -1,0 +1,79 @@
+{
+  "query": {
+    "package": "org.yaml:snakeyaml",
+    "version": "1.33"
+  },
+  "vuln_count": 1,
+  "vulns": [
+    {
+      "id": "GHSA-mjmj-j48q-9wg2",
+      "aliases": [
+        "CVE-2022-1471"
+      ],
+      "summary": "SnakeYaml Constructor Deserialization Remote Code Execution",
+      "published": "2022-12-12T21:19:47Z",
+      "modified": "2026-09-10T03:49:50.365884036Z",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L"
+        }
+      ],
+      "database_specific_severity": "HIGH",
+      "affected_matching_package": [
+        {
+          "package": {
+            "name": "org.yaml:snakeyaml",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.yaml/snakeyaml"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.0"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.10",
+            "1.11",
+            "1.12",
+            "1.13",
+            "1.14",
+            "1.15",
+            "1.16",
+            "1.17",
+            "1.18",
+            "1.19",
+            "1.20",
+            "1.21",
+            "1.22",
+            "1.23",
+            "1.24",
+            "1.25",
+            "1.26",
+            "1.27",
+            "1.28",
+            "1.29",
+            "1.30",
+            "1.31",
+            "1.32",
+            "1.33",
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.7",
+            "1.8",
+            "1.9"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "query": {
+    "package": "org.apache.commons:commons-lang3",
+    "version": "3.18.0"
+  },
+  "vuln_count": 0,
+  "vulns": []
+}

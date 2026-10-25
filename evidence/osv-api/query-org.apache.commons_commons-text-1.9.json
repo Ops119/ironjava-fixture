@@ -1,0 +1,54 @@
+{
+  "query": {
+    "package": "org.apache.commons:commons-text",
+    "version": "1.9"
+  },
+  "vuln_count": 1,
+  "vulns": [
+    {
+      "id": "GHSA-599f-7c49-w659",
+      "aliases": [
+        "CVE-2022-42889"
+      ],
+      "summary": "Arbitrary code execution in Apache Commons Text",
+      "published": "2022-10-13T19:00:17Z",
+      "modified": "2024-02-16T08:09:06.872889Z",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "database_specific_severity": "CRITICAL",
+      "affected_matching_package": [
+        {
+          "package": {
+            "name": "org.apache.commons:commons-text",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/org.apache.commons/commons-text"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.5"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.5",
+            "1.6",
+            "1.7",
+            "1.8",
+            "1.9"
+          ]
+        }
+      ]
+    }
+  ]
+}

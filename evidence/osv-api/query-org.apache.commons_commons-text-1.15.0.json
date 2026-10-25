@@ -1,0 +1,8 @@
+{
+  "query": {
+    "package": "org.apache.commons:commons-text",
+    "version": "1.15.0"
+  },
+  "vuln_count": 0,
+  "vulns": []
+}

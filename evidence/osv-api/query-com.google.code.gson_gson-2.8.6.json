@@ -1,0 +1,81 @@
+{
+  "query": {
+    "package": "com.google.code.gson:gson",
+    "version": "2.8.6"
+  },
+  "vuln_count": 1,
+  "vulns": [
+    {
+      "id": "GHSA-4jrv-ppp4-jm57",
+      "aliases": [
+        "CVE-2022-25647",
+        "SNYK-JAVA-COMGOOGLECODEGSON-1730327"
+      ],
+      "summary": "Deserialization of Untrusted Data in Gson",
+      "published": "2022-05-03T00:00:44Z",
+      "modified": "2026-09-10T03:49:19.710819205Z",
+      "severity": [
+        {
+          "type": "CVSS_V3",
+          "score": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:H"
+        }
+      ],
+      "database_specific_severity": "HIGH",
+      "affected_matching_package": [
+        {
+          "package": {
+            "name": "com.google.code.gson:gson",
+            "ecosystem": "Maven",
+            "purl": "pkg:maven/com.google.code.gson/gson"
+          },
+          "ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.8.9"
+                }
+              ]
+            }
+          ],
+          "versions": [
+            "1.1",
+            "1.4",
+            "1.5",
+            "1.6",
+            "1.7",
+            "1.7.1",
+            "1.7.2",
+            "2.0",
+            "2.1",
+            "2.2",
+            "2.2.1",
+            "2.2.2",
+            "2.2.3",
+            "2.2.4",
+            "2.3",
+            "2.3.1",
+            "2.4",
+            "2.5",
+            "2.6",
+            "2.6.1",
+            "2.6.2",
+            "2.7",
+            "2.8.0",
+            "2.8.1",
+            "2.8.2",
+            "2.8.3",
+            "2.8.4",
+            "2.8.5",
+            "2.8.6",
+            "2.8.7",
+            "2.8.8"
+          ]
+        }
+      ]
+    }
+  ]
+}

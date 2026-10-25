@@ -1,0 +1,9 @@
+Pair key: advisory id, Maven coordinate, resolved version
+Baseline pairs: 12
+Patched pairs: 10
+Removed:
+  - CVE-2022-42889 | org.apache.commons:commons-text | 1.9
+  - GHSA-599f-7c49-w659 | org.apache.commons:commons-text | 1.9
+Added:
+  (none)
+Native --data-source=native GHSA tuples equal to baseline GHSA tuples: True
